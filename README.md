@@ -91,12 +91,10 @@ Run tests with:
 python -m unittest discover
 ```
 
-## Suggested Group Split
+## Group Split
 
 - Input parsing: implement `src/sequence_alignment/input_parser.py`.
 - Basic algorithm: implement `src/sequence_alignment/basic.py`.
 - Memory-efficient algorithm: implement `src/sequence_alignment/efficient.py`.
 - Testing: add unit tests under `tests/` and compare results with `data/SampleTestCases/`.
 - Experiments and report: add scripts under `scripts/` for collecting results from `data/Datapoints/`.
-
-If the course autograder requires specific filenames such as `basic_*.py` and `efficient_*.py`, keep the package structure unchanged and copy or rename the two top-level entry files as needed.
