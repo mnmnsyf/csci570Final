@@ -26,7 +26,6 @@ def read_output(file_path):
 
 
 def get_problem_size(input_file):
-    # 👉 简单办法：直接调用你的 parser（推荐）
     from sequence_alignment.input_parser import read_problem
     s, t = read_problem(str(input_file))
     return len(s) + len(t)
@@ -60,7 +59,6 @@ def main():
             "eff_mem": em
         })
 
-    # 保存 CSV
     csv_file = OUTPUT_DIR / "results.csv"
     with open(csv_file, "w", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=results[0].keys())
@@ -69,12 +67,10 @@ def main():
 
     print("Saved CSV to", csv_file)
 
-    # 排序
     results.sort(key=lambda x: x["size"])
 
     x = [r["size"] for r in results]
 
-    # 时间图
     plt.figure()
     plt.plot(x, [r["basic_time"] for r in results], marker='o', label="Basic")
     plt.plot(x, [r["eff_time"] for r in results], marker='o', label="Efficient")
@@ -84,7 +80,6 @@ def main():
     plt.savefig(PLOT_DIR / "time.png")
     plt.close()
 
-    # 内存图
     plt.figure()
     plt.plot(x, [r["basic_mem"] for r in results], marker='o', label="Basic")
     plt.plot(x, [r["eff_mem"] for r in results], marker='o', label="Efficient")
